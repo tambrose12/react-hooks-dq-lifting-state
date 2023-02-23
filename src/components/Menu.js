@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Menu() {
+
+function Menu({ toggleDarkMode }) {
+
+  const [checked, setChecked] = useState(false)
+
+  const handleToggle = () => {
+    toggleDarkMode();
+    setChecked(!checked)
+  }
+
+
   return (
     <div className="menu item">
       <div className="ui toggle checkbox">
         <input
           type="checkbox"
           name="public"
-          checked={false}
-          onChange={() => console.log("toggle")}
+          checked={checked}
+          onChange={handleToggle}
         />
         <label>Toggle Dark Mode</label>
       </div>
